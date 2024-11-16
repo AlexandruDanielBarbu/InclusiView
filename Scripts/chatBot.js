@@ -1,49 +1,31 @@
 const site = window.location.hostname;
-const API_KEY = null;
+// const { Mistral } = require('@mistralai/mistralai');
 
-async function getOpenAIResponse(userInput) {
-  const url = "https://api.openai.com/v1/completions";
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${API_KEY}`,
-  };
+const apiKey = "y7JBDqhZyNRdL700gMI4SCHHYkkcNFKL";
 
-  const data = {
-    model: "gpt-3.5-turbo", // You can change this to gpt-3.5-turbo or gpt-4
-    prompt: userInput,
-    max_tokens: 100,
-    temperature: 0.7,
-  };
+// const client = new Mistral({apiKey: apiKey});
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(data),
-  });
-
-  const result = await response.json();
-  // const botResponse = result.choices[0].text.trim();
-  const botResponse = "Sorry, something went wrong.";
-
-  if (botResponse)
-    return botResponse; // Save the response in a variable
-  else
-    return null;
-}
-
-async function getResponse(question) {
-  const response = await getOpenAIResponse(question); // Wait for the response and store it in a variable
-  return response;
-}
+// async function getChatResponse(userInput) {
+//   try {
+//       const chatResponse = await client.chat.complete({
+//           model: "codestral-latest",
+//           messages: [{ role: 'user', content: userInput }]
+//       });
+//       return chatResponse;
+//   } catch (error) {
+//       console.error('Error generating response:', error);
+//       return null;
+//   }
+// }
 
 // if (window.location.protocol !== "chrome-extension:" && window.location.protocol !== "edge-extension:") {
   const chatbot = document.createElement("div");
   chatbot.innerHTML = `
-	<div id="chat-wrapper" style="position: fixed; bottom: 5px; right: 20px; width: 300px; height: 400px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: height 0.3s ease;">
+	<div id="chat-wrapper" style="position: fixed; bottom: 5px; right: 30px; width: 300px; height: 50px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: height 0.3s ease;">
 		<div id="chat-header" style="height: 50px; background: #4CAF50; color: white; text-align: center; padding: 10px; cursor: pointer;">
 		Chatbot
 		</div>
-		<div id="chat-container" style="height: calc(100% - 50px); overflow: hidden; display: block;">
+		<div id="chat-container" style="height: calc(100% - 50px); overflow: hidden; display: none;">
 		<div id="chat-box" style="height: calc(100% - 40px); overflow-y: auto; margin: 0; padding: 10px; box-sizing: border-box;"></div>
 		<div style="display: flex; border-top: 1px solid #ccc;">
 			<input type="text" id="user-input" placeholder="Ask me something!" style="flex: 1; height: 40px; box-sizing: border-box; padding: 10px; border: none;" />
@@ -95,7 +77,17 @@ async function getResponse(question) {
 
     // Simulate a bot response
     const botResponse = document.createElement("div");
-    botResponse.textContent = getResponse(userMessage.textContent);
+    
+    // (async () => {
+    //   const response = await getChatResponse(userInput);
+    //   if (response) {
+    //       // Assuming botResponse is an element in your DOM
+    //       botResponse.textContent = response;
+    //   } else {
+    //     botResponse.textContent = "Sorry, something went wrong.";
+    //   }
+    // })();
+    botResponse.textContent = "Sorry, something went wrong";
     botResponse.style.marginBottom = "10px";
     botResponse.style.color = "#555";
     chatBox.appendChild(botResponse);
