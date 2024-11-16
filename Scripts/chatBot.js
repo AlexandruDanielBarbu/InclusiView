@@ -22,8 +22,13 @@ async function getOpenAIResponse(userInput) {
   });
 
   const result = await response.json();
-  const botResponse = result.choices[0].text.trim();
-  return botResponse; // Save the response in a variable
+  // const botResponse = result.choices[0].text.trim();
+  const botResponse = "Sorry, something went wrong.";
+
+  if (botResponse)
+    return botResponse; // Save the response in a variable
+  else
+    return null;
 }
 
 async function getResponse(question) {
@@ -31,13 +36,10 @@ async function getResponse(question) {
   return response;
 }
 
-if (
-  window.location.protocol !== "chrome-extension:" &&
-  window.location.protocol !== "edge-extension:"
-) {
+// if (window.location.protocol !== "chrome-extension:" && window.location.protocol !== "edge-extension:") {
   const chatbot = document.createElement("div");
   chatbot.innerHTML = `
-	<div id="chat-wrapper" style="position: fixed; bottom: 20px; right: 20px; width: 300px; height: 400px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: height 0.3s ease;">
+	<div id="chat-wrapper" style="position: fixed; bottom: 5px; right: 20px; width: 300px; height: 400px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: height 0.3s ease;">
 		<div id="chat-header" style="height: 50px; background: #4CAF50; color: white; text-align: center; padding: 10px; cursor: pointer;">
 		Chatbot
 		</div>
@@ -112,4 +114,4 @@ if (
 
   // Event listener for the "Send" button
   sendButton.addEventListener("click", sendMessage);
-}
+// }
