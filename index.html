@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title></title>
-	</head>
-	<body>
-		<h2>InclusiView</h2>
-	<h3>CSS Modifier</h3>
-	</body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Your Button</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <div class="toggle-container">
+	 <label class="switch">
+		  <input type="checkbox" id="toggle-btn">
+		  <span class="slider"></span>
+	 </label>
+   </div>
+
+  <div class="container">
+	<h1 class="text-center my-4">Button Styler</h1>
+	<form id="styleForm" class="p-4 border rounded shadow-sm bg-white">
+	  <div class="mb-3">
+		<label for="backgroundColor" class="form-label">Background Color</label>
+		<input type="color" id="backgroundColor" class="form-control" value="#007bff">
+	  </div>
+	  <div class="mb-3">
+		<label for="fontColor" class="form-label">Font Color</label>
+		<input type="color" id="fontColor" class="form-control" value="#ffffff">
+	  </div>
+	  <div class="mb-3">
+		<label for="buttonSize" class="form-label">Button Size</label>
+		<select id="buttonSize" class="form-select">
+		  <option value="small">Small</option>
+		  <option value="medium" selected>Medium</option>
+		  <option value="large">Large</option>
+		</select>
+	  </div>
+	  <div class="text-center">
+		<button type="button" id="applyStyles" class="btn btn-primary">Apply Styles</button>
+	  </div>
+	</form>
+	<div class="text-center preview-button">
+	  <button id="previewButton" class="btn btn-primary">Preview Button</button>
+	</div>
+
+	<h1 class="text-center my-4">Page Styler</h1>
+	<form id="styleForm" class="p-4 border rounded shadow-sm bg-white">
+	  <div class="mb-3">
+		<label for="backgroundColor" class="form-label">Background Color</label>
+		<input type="color" id="pageBackgroundColor" class="form-control" value="#007bff">
+	  </div>
+	  <div class="mb-3">
+		<label for="fontColor" class="form-label">Font Color</label>
+		<input type="color" id="pageFontColor" class="form-control" value="#ffffff">
+	  </div>
+	  <div class="mb-3">
+		<label for="buttonSize" class="form-label">Button Size</label>
+		<select id="pageSize" class="form-select">
+		  <option value="small">Small</option>
+		  <option value="medium" selected>Medium</option>
+		  <option value="large">Large</option>
+		</select>
+	  </div>
+	  <div class="text-center">
+		<button type="button" id="pageApplyStyles" class="btn btn-primary">Apply Styles</button>
+	  </div>
+	</form>
+
+	<h1 class="text-center my-4">Screen Reader</h1>
+	<div class="toggle-container">
+		<label class="switch">
+			 <input type="checkbox" id="toggle-screen-reader">
+			 <span class="slider"></span>
+		</label>
+	  </div>
+</div>
+  <script src="popup.js"></script>
+  <script src="btnStyle.js"></script>
+</body>
 </html>
