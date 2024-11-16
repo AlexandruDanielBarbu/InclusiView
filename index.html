@@ -1,80 +1,82 @@
-<!DOCTYPEhtml>
-<htmllang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<metacharset="UTF-8">
-	<metaname="viewport"content="width=device-width,initial-scale=1.0">
-	<title>StyleYourButton</title>
-	<linkrel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-	<linkrel="stylesheet"href="stylesheet.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Style Your Button</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
 
-	<divclass="toggle-container">
-	<labelclass="switch">
-			<inputtype="checkbox"id="toggle-btn">
-			<spanclass="slider"></spanclass=>
-	</label>
-	</div>
-
-	<divclass="container">
-	<h1class="text-centermy-4">ButtonStyler</h1class=>
-	<formid="styleForm"class="p-4borderroundedshadow-smbg-white">
-		<divclass="mb-3">
-		<labelfor="backgroundColor"class="form-label">BackgroundColor</labelfor=>
-		<inputtype="color"id="backgroundColor"class="form-control"value="#007bff">
-		</div>
-		<divclass="mb-3">
-		<labelfor="fontColor"class="form-label">FontColor</labelfor=>
-		<inputtype="color"id="fontColor"class="form-control"value="#ffffff">
-		</div>
-		<divclass="mb-3">
-		<labelfor="buttonSize"class="form-label">ButtonSize</labelfor=>
-		<selectid="buttonSize"class="form-select">
-			<optionvalue="small">Small</optionvalue=>
-			<optionvalue="medium"selected>Medium</optionvalue=>
-			<optionvalue="large">Large</optionvalue=>
-		</select>
-		</div>
-		<divclass="text-center">
-		<buttontype="button"id="applyStyles"class="btnbtn-primary">ApplyStyles</buttontype=>
-		</div>
-	</form>
-	<divclass="text-centerpreview-button">
-		<buttonid="previewButton"class="btnbtn-primary">PreviewButton</buttonid=>
-	</div>
-
-	<h1class="text-centermy-4">PageStyler</h1class=>
-	<formid="styleForm"class="p-4borderroundedshadow-smbg-white">
-		<divclass="mb-3">
-		<labelfor="backgroundColor"class="form-label">BackgroundColor</labelfor=>
-		<inputtype="color"id="pageBackgroundColor"class="form-control"value="#007bff">
-		</div>
-		<divclass="mb-3">
-		<labelfor="fontColor"class="form-label">FontColor</labelfor=>
-		<inputtype="color"id="pageFontColor"class="form-control"value="#ffffff">
-		</div>
-		<divclass="mb-3">
-		<labelfor="buttonSize"class="form-label">ButtonSize</labelfor=>
-		<selectid="pageSize"class="form-select">
-			<optionvalue="small">Small</optionvalue=>
-			<optionvalue="medium"selected>Medium</optionvalue=>
-			<optionvalue="large">Large</optionvalue=>
-		</select>
-		</div>
-		<divclass="text-center">
-		<buttontype="button"id="pageApplyStyles"class="btnbtn-primary">ApplyStyles</buttontype=>
-		</div>
-	</form>
-
-	<h1class="text-centermy-4">ScreenReader</h1class=>
-	<divclass="toggle-container">
-		<labelclass="switch">
-			<inputtype="checkbox"id="toggle-screen-reader">
-			<spanclass="slider"></spanclass=>
+	<div class="toggle-container">
+		<label class="switch">
+			<input type="checkbox" id="toggle-btn">
+			<span class="slider"></span>
 		</label>
+	</div>
+
+	<div class="container">
+		<h1 class="text-center my-4">Button Styler</h1>
+		<form id="styleForm" class="p-4 border rounded shadow-sm bg-white">
+			<div class="mb-3">
+				<label for="backgroundColor" class="form-label">Background Color</label>
+				<input type="color" id="backgroundColor" class="form-control" value="#007bff">
+			</div>
+			<div class="mb-3">
+				<label for="fontColor" class="form-label">Font Color</label>
+				<input type="color" id="fontColor" class="form-control" value="#ffffff">
+			</div>
+			<div class="mb-3">
+				<label for="buttonSize" class="form-label">Button Size</label>
+				<select id="buttonSize" class="form-select">
+					<option value="small">Small</option>
+					<option value="medium" selected>Medium</option>
+					<option value="large">Large</option>
+				</select>
+			</div>
+			<div class="text-center">
+				<button type="button" id="applyStyles" class="btn btn-primary">Apply Styles</button>
+			</div>
+		</form>
+
+		<div class="text-center preview-button">
+			<button id="previewButton" class="btn btn-primary">Preview Button</button>
 		</div>
-</div>
-	<scriptsrc="Scripts/popup.js"></scriptsrc=>
-	<scriptsrc="Scripts/btnStyle.js"></scriptsrc=>
+
+		<h1 class="text-center my-4">Page Styler</h1>
+		<form id="pageStyleForm" class="p-4 border rounded shadow-sm bg-white">
+			<div class="mb-3">
+				<label for="pageBackgroundColor" class="form-label">Background Color</label>
+				<input type="color" id="pageBackgroundColor" class="form-control" value="#007bff">
+			</div>
+			<div class="mb-3">
+				<label for="pageFontColor" class="form-label">Font Color</label>
+				<input type="color" id="pageFontColor" class="form-control" value="#ffffff">
+			</div>
+			<div class="mb-3">
+				<label for="pageSize" class="form-label">Page Size</label>
+				<select id="pageSize" class="form-select">
+					<option value="small">Small</option>
+					<option value="medium" selected>Medium</option>
+					<option value="large">Large</option>
+				</select>
+			</div>
+			<div class="text-center">
+				<button type="button" id="pageApplyStyles" class="btn btn-primary">Apply Styles</button>
+			</div>
+		</form>
+
+		<h1 class="text-center my-4">Screen Reader</h1>
+		<div class="toggle-container">
+			<label class="switch">
+				<input type="checkbox" id="toggle-screen-reader">
+				<span class="slider"></span>
+			</label>
+		</div>
+	</div>
+
+	<script src="Scripts/popup.js"></script>
+	<script src="Scripts/btnStyle.js"></script>
 </body>
 </html>
