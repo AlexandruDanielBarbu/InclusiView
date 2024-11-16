@@ -1,4 +1,36 @@
 const site = window.location.hostname;
+const API_KEY = null;
+
+async function getOpenAIResponse(userInput) {
+	const url = 'https://api.openai.com/v1/completions';
+	const headers = {
+	  'Content-Type': 'application/json',
+	  'Authorization': `Bearer ${API_KEY}`,
+	};
+  
+	const data = {
+	  model: 'gpt-3.5-turbo', // You can change this to gpt-3.5-turbo or gpt-4
+	  prompt: userInput,
+	  max_tokens: 100,
+	  temperature: 0.7,
+	};
+  
+	
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: headers,
+		body: JSON.stringify(data),
+	});
+  
+	const result = await response.json();
+	const botResponse = result.choices[0].text.trim();
+	return botResponse; // Save the response in a variable
+}
+
+async function getResponse(question) {
+	const response = await getOpenAIResponse(question); // Wait for the response and store it in a variable
+	return response;
+}
 
 const Add_Custom_Style = (css) =>
 	(document.head.appendChild(document.createElement("style")).innerHTML = css);
@@ -32,7 +64,7 @@ function Create_Custom_Element(tag, attr_tag, attr_name, value) {
 if (window.location.protocol !== "chrome-extension:" && window.location.protocol !== "edge-extension:") {
 	const chatbot = document.createElement("div");
 	chatbot.innerHTML = `
-	<div style="position: fixed; bottom: 20px; right: 20px; width: 300px; height: 400px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: height 0.3s ease;">
+	<div id="chat-wrapper" style="position: fixed; bottom: 20px; right: 20px; width: 300px; height: 400px; background: #fff; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: height 0.3s ease;">
 		<div id="chat-header" style="height: 50px; background: #4CAF50; color: white; text-align: center; padding: 10px; cursor: pointer;">
 		Chatbot
 		</div>
@@ -88,7 +120,7 @@ if (window.location.protocol !== "chrome-extension:" && window.location.protocol
 
 	// Simulate a bot response
 	const botResponse = document.createElement("div");
-	botResponse.textContent = "Bot: " + "I'm a simple bot!";
+	botResponse.textContent = getResponse(userMessage.textContent);
 	botResponse.style.marginBottom = "10px";
 	botResponse.style.color = "#555";
 	chatBox.appendChild(botResponse);
