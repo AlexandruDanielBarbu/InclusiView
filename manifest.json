@@ -1,0 +1,22 @@
+{
+	"manifest_version": 3,
+	"name": "InclusiView",
+	"description": "Extension that makes websites more accessible and easy to read",
+	"version": "1.0",
+	"permissions": ["activeTab", "scripting"],
+	"host_permissions": ["<all_urls>"],
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["script.js"]
+		}
+	],
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": {
+			"16": "inclusi_view.png",
+			"48": "inclusi_view.png",
+			"128": "inclusi_view.png"
+		}
+	}
+}
