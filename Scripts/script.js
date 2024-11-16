@@ -104,3 +104,43 @@ function deactivateScreenReader() {
   });
   console.log("Screen reader disabled");
 }
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+	if (message.action === "applyStyles") {
+	  copyStylesFromPreviewButton();
+	}
+  });
+
+  function copyStylesFromPreviewButton() {
+	const previewButton = document.querySelector("#previewButton");
+	if (!previewButton) {
+	  console.error("Preview button not found on the webpage.");
+	  return;
+	}
+
+	const computedStyles = window.getComputedStyle(previewButton);
+	const styleProperties = [
+	  "backgroundColor",
+	  "color",
+	  "fontSize",
+	  "padding",
+	  "border",
+	  "borderRadius",
+	  "boxShadow",
+	  "fontWeight",
+	  "fontFamily",
+	  "textAlign",
+	  "textTransform",
+	];
+
+	const allButtons = document.querySelectorAll("button");
+	allButtons.forEach((button) => {
+	  if (button !== previewButton) {
+		styleProperties.forEach((property) => {
+		  button.style[property] = computedStyles[property];
+		});
+	  }
+	});
+
+	console.log("Styles copied from preview button to all other buttons.");
+  }
