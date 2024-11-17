@@ -1,0 +1,2 @@
+chrome.runtime.onMessage.addListener((function(e,t,a){"activateReader"===e.action?chrome.scripting.executeScript({target:{tabId:t.tab.id},func:activateScreenReader}):"deactivateReader"===e.action&&chrome.scripting.executeScript({target:{tabId:t.tab.id},func:stopReading})}));
+//# sourceMappingURL=background.bundle.js.map
