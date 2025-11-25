@@ -1,5 +1,6 @@
 const site = window.location.hostname;
 
+const apiKey = "y7JBDqhZyNRdL700gMI4SCHHYkkcNFKL";
 
 const chatbot = document.createElement("div");
 chatbot.innerHTML = `
@@ -45,8 +46,30 @@ chatHeader.addEventListener("click", () => {
   }
 });
 
+const sendToMistral = async (userText) => {
+  try {
+    const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "codestral-latest",
+        messages: [{ role: "user", content: userText }],
+      }),
+    });
+
+    const data = await response.json();
+    return data.choices[0]?.message?.content || "Sorry, I had trouble responding.";
+  } catch (err) {
+    console.error(err);
+    return "Error: Unable to generate a response.";
+  }
+};
+
 // Handle sending a message
-const sendMessage = () => {
+const sendMessage = async () => {
   if (isCollapsed) return; // Don't allow messages when collapsed
   const userInput = userInputField.value.trim();
   if (!userInput) return; // Ignore empty input
@@ -57,11 +80,15 @@ const sendMessage = () => {
   userMessage.style.marginBottom = "10px";
   chatBox.appendChild(userMessage);
 
-  // Simulate a bot response
+  // bot response
   const botResponse = document.createElement("div");
-  botResponse.textContent = "Sorry, error generating response.";
+  botResponse.textContent = "...";
   botResponse.style.marginBottom = "10px";
   botResponse.style.color = "#555";
+  chatBox.appendChild(botResponse);
+
+  const aiText = await sendToMistral(userInput);
+  botResponse.textContent = "Bot: " + aiText;
   chatBox.appendChild(botResponse);
 
   // Clear input field and scroll to bottom
